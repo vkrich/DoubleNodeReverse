@@ -33,7 +33,31 @@ def print_node(head):
     current_node = current_node.next
     print(current_node.data)
     
-               
+def del_item(head, k):  
+  if k<=0: #nedative cases
+    print("Wrong k, no element found")
+    return head
+
+  k-=1
+  current_node = head
+
+  if k==0:
+    head = current_node.next     
+    return head 
+
+  for _ in range(k-1):
+    try:
+      current_node = current_node.next 
+    except AttributeError:
+      print("Wrong k, no element found")
+      return head
+  try:
+    current_node.next = current_node.next.next
+  except AttributeError:
+    print("Wrong k, no element found")
+    return head
+  return head
+
 items = [0, 1, 2, 3, 4, 5]
 head_node = DoubleNode(items[0])
 current_node = head_node
@@ -49,3 +73,5 @@ print("##########REVERSE############")
 head_node = solution(head_node)
 print_node(head_node)
 print("######################")
+head_node = del_item(head_node, 7)
+print_node(head_node)
