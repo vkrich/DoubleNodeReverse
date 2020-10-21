@@ -44,18 +44,12 @@ def del_item(head, k):
   if k==0:
     head = current_node.next     
     return head 
-
-  for _ in range(k-1):
-    try:
-      current_node = current_node.next 
-    except AttributeError:
-      print("Wrong k, no element found")
-      return head
   try:
+    for _ in range(k-1):      
+      current_node = current_node.next   
     current_node.next = current_node.next.next
   except AttributeError:
-    print("Wrong k, no element found")
-    return head
+    print("Wrong k, no element found")    
   return head
 
 items = [0, 1, 2, 3, 4, 5]
