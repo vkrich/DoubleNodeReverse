@@ -1,3 +1,41 @@
+class MyQueue(list):  
+  def __init__(self, items = []):
+    self.items = items
+  def pop(self):
+    try:
+      first_elem = self.items[0]
+      self.items = self.items[1:]  
+      print(first_elem)    
+      return first_elem 
+    except IndexError:
+      return None  
+    
+  def push(self, x):
+    self.items.append(x)
+
+  def size(self):
+    print(len(self.items))
+    return len(self.items)
+
+  def peek(self):
+    try:
+      print(self.items[0])
+      return self.items[0]
+    except IndexError:
+      return None  
+
+qu = MyQueue()
+
+print("############Queue#############")
+for _ in range(int(input())):
+  command = input().split()
+  try:
+    eval(f'qu.{command[0].strip()}({command[1].strip()})')
+  except IndexError:
+    eval(f'qu.{command[0].strip()}()')
+
+print("##############DoubleNode################")
+
 class DoubleNode:    
   def __init__(self, data, next=None, prev=None):
     self.data = data
